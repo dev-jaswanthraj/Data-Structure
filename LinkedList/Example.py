@@ -35,7 +35,7 @@ class LinkedList:
         if index == 0:
             self.add_data_at_start(data)
             return
-        if index-1 == 0:
+        if index-1 == 0 and self.__head != None:
             self.add_data_at_end(data)
             return
         self.node = Node(data)
@@ -45,11 +45,9 @@ class LinkedList:
             while count != index-1:
                 self.__cur = self.__cur.next
                 count += 1
-
-            
-                self.prv = self.__cur.next
-                self.__cur.next = self.node
-                self.node.next = self.prv
+            self.prv = self.__cur.next
+            self.__cur.next = self.node
+            self.node.next = self.prv
         except AttributeError:
             print("Index Out Bound")
             exit(0)
@@ -75,11 +73,9 @@ class LinkedList:
 
 if __name__ == "__main__":
     l = LinkedList()
-    l.add_data_at_start(0)
-    l.add_data_at_end(1)
-    l.add_data_at_end(2)
-    l.add_data_at_end(3)
-    l.add_data_at_specific_index(2.5, 2)
+    l.add_data_at_specific_index(1000, 1)
     l.display()
-    l.add_data_at_specific_index(2.5, 10)
+    l.add_data_at_specific_index(100, 1)
+    l.display()
+    l.add_data_at_specific_index(10, 0)
     l.display()
